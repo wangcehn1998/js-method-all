@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var str = "abcoefoxyozzoppqwe";
+      var nstr = [];
+      // console.log(str[0]);
+
+      for (let i = 0; i < str.length; i++) {
+        // nstr[str[i]] str[0]=='a' nstr['a']就是在声明了一个位置名a并赋值为0 因为数组也是对象 [{a:0},{b:0}]
+        nstr[str[i]] = 0;
+      }
+      for (let i = 0; i < str.length; i++) {
+        // 给键值对的值做++操作
+        nstr[str[i]]++;
+      }
+      console.log(nstr);
+
+      // var max = 0;
+      // var k = "";
+      // for (var key in nstr) {
+      //   if (nstr[key] > max) {
+      //     max = nstr[key];
+      //     k = key;
+      //   }
+      // }
+      // console.log(max, k);
+    </script>
+  </body>
+</html>

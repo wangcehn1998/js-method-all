@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 字符串所有方法都不会修改本身会开辟新空间，返回新字符串;
+
+    str.toLowerCase(); //将字符串中的字母全转成小写
+    str.toUpperCase(); //将字符串中的字母全转成大写
+
+    str.charAt(索引号); //根据索引返回字符
+    str.charCodeAt(索引号); //返回指定位置的字符的Unicode编码
+    str.indexOf("要查找字符", "从哪个位置开始"); //返回指定字符值再字符串中首次出现的位置 无返回-1 写一个参数两个参数都可以
+    str.lastIndexOf("要查找字符", "从哪个位置开始"); //向后进行检索（从尾到头）返回指定文本在字符串中最后一次出现的索引：
+    str.search(); //搜索特定值的字符串，并返回匹配的位置：
+    // 与indexof区别：search()无法设置第二个开始位置参数。 indexOf()无法设置更强大的搜索值（正则表达式）。
+
+    str.substr(截取起始位置, 截取几个字符); //返回被截取字符串 不写截到最后 第二个参数不能为负，因为它定义的是长度。
+    str.substring(); //与substr区别含左不含右 无法接受负的索引 第二个参数不能为负，因为它定义的是长度。
+    str.slice(起始索引, 终止索引); //参数为负从结尾开始计数 省略第二个参数将裁剪字符串的剩余部分
+
+    str.split(""); //str-->arr
+    str.concat(); //连接字符串
+    str.replace("被替换字符", "替换字符"); //若被替换字符有多个，只替换第一个
+    str.trim(); //删除字符串两端的空白符：
+  </script>
+</html>

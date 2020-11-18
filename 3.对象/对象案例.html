@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=z, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <!-- 判断两个对象是否相等 -->
+  <script>
+    var obj1 = { a: 1 };
+    var obj2 = { a: 1 };
+    // 可以通过obj.is()判断引用地址
+    console.log(Object.is(obj1, obj2)); //false
+    var obj3 = obj1;
+    console.log(Object.is(obj1, obj3)); //true
+    console.log(Object.is(obj2, obj3)); //false
+
+    //
+    function isobj(a, b) {
+      //1.判断是否指向同一内存
+      if (a == b) return true;
+      //   获取两个对象键值数组
+      var aProps = Object.getOwnPropertyNames(a);
+      var bProps = Object.getOwnPropertyNames(b);
+      //判断键值数组长度是否一致 键值数组是否相等
+      if (aProps.length !== bProps.length) return false;
+      //遍历对象键值 判断键值是否相等
+      for (var k in a) {
+        if (b.hasOWnProperty(prop)) {
+          if (typeof a[prop] === "object") {
+            if (!isobj(a[prop], b[prop])) return false;
+          } else if (a[prop] !== b[prop]) {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      }
+      return true;
+    }
+    isobj(obj1, obj2);
+  </script>
+</html>

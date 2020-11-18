@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<!-- 选择器 -->
+<script>
+  jq选择器;
+  $("#id/*/.class/div/div,p/li.class/ul>li/ ul li");
+
+  筛选选择器; //拿到的是jq对象
+  $("li:first/last"); //获取第一个/最后一个li
+  $("li:eq(index)") / $("li").eq(index); //获取li索引为几的元素 index从0开始
+  $("li:odd/even"); //获取li索引为奇数/偶数的元素
+
+  筛选方法(重点);
+  $(".son").parent(); //返回的是 最近一级的父级元素
+  $(".four").parents(".one"); //无参返回所有父级 有参指定
+  $().children(); //亲儿子 有参数获取指定子代无获取所有子代   $(".nav").children("li").css("color", "red");
+  $().find(css选择器); //必须带参数   包括儿子和孙子        $(".nav").find("li").css("color", "red");
+  $(".nav").siblings(); //除了自身元素之外的所有亲兄弟 括号里可以写也可以不写 不写就是所有的亲兄弟写就是 指定亲兄弟
+  $("li").nextAll() / prevAll(); //元素之后/之前的所有同辈元素
+
+  $(this).addClss().siblings().removeClass(); //排他
+
+  $().index(); //得到当前元素的索引
+</script>
+<!-- 操作css -->
+<script>
+  $("div").css("width"); //200px
+  $("div").css("color", "red"); //值如果是数字可以不加单位和引号
+  $("div").css({ width: 400, height: 400, backgroundColor: "red" }); //参数可以是对象形式 复合属性驼峰命名法，
+
+  设置类样式方法(常用);
+  $("div").add / remove / toggleClass("current"); //添加/删除/切换 参数是不加点的类名
+  hasClass(); //判断是否有某个类名   返回true/false    console.log($("div:first").hasClass("current"));
+
+  与className区别;
+  原生js的className会覆盖原先的类名; //jquery的类操作只是对指定类进行操作，不影响原先类名
+</script>
+<!-- 操作属性 -->
+<script>
+  $().prop(); //设置获取元素自身带有的属性
+  $().attr(); //元素的自定义属性
+  $().data(); //数据缓存 这个里面的数据是存放在元素的内存里面
+  $().data(); //可以在指定元素上存储数据不会修改dom元素结构，页面刷新之前存放的数据将移除
+  $("span").data("uname", "andy");
+  console.log($("span").data("uname"));
+  console.log($("div ").data("index ")); //获取data-开头的不用写data- 返回数字型
+</script>
+<!-- 操作内容 -->
+<script>
+  html(); //获取设置元素内容
+  text(); //获取设置元素文本内容
+  val(); //获取设置表单值
+</script>
+<!-- 操作元素 -->
+<script>
+  1; //遍历元素
+  //同一类元素做相同操作叫隐式迭代 同一类元素做不同操作叫遍历
+  $("div").each(function (index, domEle) {}); // 下标 原生dom
+  $.each(); //主要用于遍历数组/对象/jq对象，处理数据
+
+  2; //创建元素
+  var li = $("<li>我是后来创建的li</li>"); //创建元素
+
+  3; //添加元素
+  //1.内部添加 父子关系  $("ul").append/prepend(li);  内部添加并且放到内容的最后面 / 最前面
+  //2.外部添加 兄弟关系  $(".test").after/brfore(div);
+
+  4; //删除元素 //empty() html() remove()
+</script>
+<!-- 元素大小 -->
+<script>
+  1; // width() / height() 获取设置元素 width和height大小
+  2; // innerWidth() / innerHeight()  获取设置元素 width和height + padding 大小
+  3; //outerWidth()  / outerHeight()  获取设置元素 width和height + padding + border 大小
+  4; // outerWidth(true) / outerHeight(true) 获取设置 width和height + padding + border + margin
+</script>
+<!--  元素位置 -->
+<script>
+  1; //获取设置距离文档的位置（偏移）
+  offse(); //返回一个对象 $(".son").offset().top);$(".son").offset({top: 200,left: 200});
+
+  2; //获取距离带有定位父级位置（偏移）
+  position(); //  如果没有带有定位的父级，则以文档为准 只可读  $(".son").position().top);
+
+  3; //被卷去的头部
+  $(document).scrollTop() / //被卷去的左侧 scrollLeft()
+    4; //页面滚动事件
+  $(window).scroll(function () {});
+</script>
+<!-- jq底层知识 -->
+<script>
+  //把js中的dom操作做了封装  本质：如何调用这些函数
+
+  入口函数;
+  //等着页面DOM加载完毕再去执行js 代码
+  //1.$(document).ready(function() {})  2.$(function() {})
+
+  顶级对象;
+  //$是jq的别称 也是jq的顶级对象 相当于window   把DOM节点利用$包装成jq对象，就可以调用jq的方法
+
+  jq对象与dom对象;
+  //原生js获取过来的就是dom对象  jq方法获取的就是jq对象
+  //jq对象本质：利用$对dom对象包装后产生的对象！！！以伪数组形式存储
+  //jq对象只能使用jq的方法 dom对象只能使用原生js
+
+  相互转换;
+  //原生js比jq大 原生的一些属性和方法jq没封装
+  //1.dom-jq    var div=document.queryselector('div') $(div)
+  //2.jq-dom    $('div')[index] index索引号  $('div').get(index)
+  //$(this)this不加引号
+</script>
+<!-- 动画和效果 -->
+<script>
+  jq效果; //125的参数一样
+
+  1; //显示隐藏  一般情况下不加参数
+  show([speed], [easing], [fn]); //显示
+  //  speed:速度的字符串('slow','normal','fast')或动画时长的毫秒值如1000
+  //  easing：切换指定效果 默认'swing',可用参数'linear'
+  //  fn:回调函数 每个元素执行一次
+  hide(); //隐藏
+  toggle(); //切换
+
+  2; //滑动
+  $("div").slideDown(); //下滑动
+  $("div").slideUp(); //下滑动
+  $("div").slideToggle(200); //切换 200毫秒
+
+  3; //事件切换
+  鼠标经过离开的复合写法;
+  hover([over], [out]); //over:鼠标经过触发的函数(mouseenter)  out:鼠标离开触发的函数(mouseleave)
+  $(".nav>li").hover(
+    function () {
+      $(this).children("ul").slideDown(200);
+    },
+    function () {
+      $(this).children("ul").slideUp(200);
+    }
+  ); //);
+
+  如果只写一个函数鼠标经过离开都会触发;
+  $(".nav>li").hover(function () {
+    $(this).children("ul").slideToggle();
+  });
+
+  4; //停止动画排队
+  stop(); //必须写在动画前面 停止上一次动画
+  $(this).children("ul").stop().slideToggle();
+
+  5; //淡入淡出
+  $("div").fadeIn(); //淡入
+  $("div").fadeOut(); //淡出
+  $("div").fadeToggle(); //切换
+  $("div").fadeTo(1000, 0.5); //修改透明度 速度和透明度要必须写
+
+  6; //自定义动画
+  animate(params, [speed], [easing], [fn]); //params:想要修改的样式,对象形式,必须写,属性名可以不带引号,复合属性驼峰,其他参数可省
+  $("div").animate(
+    {
+      // left: 500,/left:'500px'
+      // top: 300,
+      // opacity: .4,
+      // width: 500
+    },
+    500
+  );
+</script>
+<!-- 事件 -->
+<script>
+  1; //单个事件注册
+  $("div").click(function () {
+    事件处理程序;
+  }); //不加on
+
+  2; //事件处理
+  $("div").on(events, [selector], fn);
+  events: 一个或多个用空格分隔的事件类型;
+  //   selector：元素的子元素选择器
+  //   fn：回调函数
+  $("div").on({
+    mouseenter: function () {
+      $(this).css("background", "skyblue");
+    },
+    click: function () {
+      $(this).css("background", "purple");
+    },
+  });
+
+  $("div").on("mouseenter mouseleave", function () {
+    $(this).toggleClass("current");
+  }); //实际常用写法
+
+  3; //on可以实现事件委托
+  $("ul").on("click", "li", function () {
+    alert(11);
+  });
+
+  4; //on可以给未来动态创建的元素绑定事件，单个事件绑定click()做不到
+  $("ol").on("click", "li", function () {
+    alert(11);
+  });
+  var li = $("<li>我是后来创建的</li>");
+  $("ol").append(li);
+
+  5; //事件解绑
+  $("div").off(); // 这个是解除了div身上的所有事件
+  $("div").off("click"); // 这个是解除了div身上的点击事件
+  $("ul").off("click", "li"); //解绑事件委托
+  $("p").one("click", function () {}); //只能触发一次事件
+
+  6; //自动触发事件
+  $("div").click(); //会触发元素的默认行为
+  $("div").trigger("click"); //会触发元素的默认行为
+  $("div").triggerHandler("click"); //不会触发元素的默认行为
+
+  7; //事件对象
+  $("div").on("click", function (e) {
+    console.log("点击了div");
+    e.stopPropagation(); //阻止冒泡
+    e.preventDefault(); //阻止默认行为
+
+    return false; //做了三件事   阻止冒泡 阻止默认行为 后边代码不执行
+  });
+</script>

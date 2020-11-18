@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    arr.join(); //arr--->string 参数为字符串 默认逗号分隔 返回值：字符串
+    arr.concat(arr1); //可拼接单个数据或单多数组 返回值:新数组 原不改
+    arr.reverse(); //翻转数组 返回值：改变后的原数组
+
+    delete arr[i]; //数组长度不变,arr[i]==undefined 原来数组的索引不变 要遍历数组元素可以用这种遍历方式 跳过其中undefined的元素
+    arr.shift() / pop(); //一次删一个 无参 返回值:被删元素 原改
+    arr.unshift("a", "b", "c") / push(); //添加一或多元素 参数:一或多元素 返回值:新数组长度 原改
+
+    arr.slice(s, e); //截取字符串 s:开始下标 e：结束下标,不设到结尾 包左不包右
+    arr.splice(下标, 删几个, 添加项); //含左含右
+
+    arr.sort; //(function (a，b) {return a - b;升序  /  b - a;降序});
+
+    arr.toString(); //arr-->str              date.toString()Tue Apr 12 2016 10:23:57 GMT+0800 (中国标准时间) n.toString()12345670
+
+    arr.toLocalString(); //arr-->本地字符串   date.toLocaleString()2016/4/12 上午10:23:57   n.toLocaleString()12,345,670
+
+    arr.forEach(function (v, i, arr) {}); //遍历 v:arr[i] i:下标 arr:数组本身
+
+    arr.every; //(function (v, i) {return v >= 10;}); //判断所有元素是否符合条件 v:arr[i] i:下标 返回值:true/false 注意：空数组一切情况下都返回true
+
+    arr.filter; //(function (v, i) {if(v>2){return true}});创建新数组包含通过所提供函数实现的测试的所有元素。
+
+    arr.indexOf(arr[i]); //根据元素返回索引 无返回-1
+
+    arr.findIndex(); //(function (v, i, arr) {return i>3}); //返回数组中满足测试函数的第一个元素的索引 无返回-1。
+
+    arr.find; //(function (v, i,arr) {return v > 18;}); // 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+
+    arr.includes(arr[i]); //用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。
+
+    arr.some(function (v, i, arr) {
+      return v > 18;
+    }); //测试数组中是不是至少有1个元素通过了被提供的函数测试。返回值:true/false
+
+    arr.from(obj); //将伪数组对象或可遍历对象转换成一个真正的数组。
+
+    arr.of(1, 2, 3); //将一系列值转换为数组
+
+    // arr.copyWithin(s, d, e); //复制数组一部分到数组另一个位置  s:被数组一部分覆盖的位置(不管数组一部分有几个也只覆盖这一关) d:复制起始位置 e:复制结束(不包含)
+
+    // var nArr = arr.entries(); //返回新的Array 该对象包含数组中每个索引的键/值对。nArr.next().value [0:'a'] 可用于遍历迭代器取得原数组的[key,value]。
+
+    // arr.fill(a, b, c); //用一个固定值填充一个数组中从起始索引到终止索引内的全部元素不包括终止索引。a:替换别人的数据 b:起始索引 c:终止索引
+
+    // var nArr = arr.flat(2); //按照一个可指定的深度递归遍历数组将所有元素与遍历到的子数组中的元素合并为一个新数组返回。参数：默认1，指定的遍历深度几层
+
+    // var nArr = arr.keys(); //返回一个包含数组中每个索引键的Array
+
+    // arr.reduce(); //方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。
+    // var arr = [1, 2, 3, 4];
+    // var reducer = (a, c) => a + c; //log(arr.reduce(reducer))10;
+
+    // arr.values(); //返回一个新的Array 该对象包含数组每个索引的值
+
+    arr.map(function (item, index) {
+      return "<b>" + item + "</b>";
+    });
+    对元素重新组装生成新数组;
+
+    // 原改:pop/push/shift/unshift/reverse/sort/splice 其他不改
+  </script>
+</html>

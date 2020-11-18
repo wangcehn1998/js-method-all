@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <!-- 获取dom各类型总元素 -->
+  <script>
+    all; //[]      提供对文档中所有 HTML 元素的访问。
+    anchors; //[]  返回对文档中所有 Anchor 对象(每一个a链接都创建一个anchor对象)的引用。
+    forms; //[]	   返回对文档中所有 Form 对象引用。
+    images; //[]   返回对文档中所有 Image 对象引用。
+    links; //[]	   返回对文档中所有 Area 和 Link 对象引用。
+  </script>
+  <!-- 获取DOM -->
+  <script>
+    方法;
+    getElementById(); //id值不要带#
+    getElementsByTagName(); //返回伪数组
+    getElementsByClassName(); //返回伪数组
+    querySelector(); //字符串是CSS选择器
+    querySelectorAll(); //返回伪数组
+    属性;
+    //parentNode：上级父亲
+    //父元素.children  ：伪数组
+    //元素.nextElementSibling  下一个兄弟
+    //元素.previousElementSibling  上一个兄弟
+  </script>
+  <!-- 注册事件 -->
+  <script>
+    方式;
+    on事件类型;
+    addEventListener: 多次注册不会覆盖;
+    事件类型;
+    click;
+    focus: 有光标;
+    //blur：失去光标
+    mouseover;
+    mouseout;
+    //键盘事件  keydown  keyup
+    //动画事件  transitionend animationend  使用addEventListener
+    函数内部;
+    // this：谁调用该函数，this就是谁！
+    // e：事件对象，必须在执行函数设置形参e；
+    // e.target：打谁就是谁！  获取DOM节点  【总结里所有属性的方法都能用】
+    // e.currentTarget :  this同等；
+    // 键盘码：e.keyCode    回车：13
+    // e.ctrlKey  :  按了ctrl  true
+  </script>
+  <!-- DOM节点属性和方法 -->
+  <script>
+    // 	标准属性
+    // 		value
+    // 		id
+    // 		img.src
+    // 		a.href
+    // 		开关属性：  checked  disabled  selected    值两个 true / false
+
+    // 	自定义属性
+    // 		意义：把一些有对应关系数据绑定在一起
+    // 		语法1
+    // 			设置：HTML 格式 data-自定义属性名 = 属性值;
+    // 			获取：DOM节点.dataset.自定义属性名
+    // 		语法2：
+    // 			设置：HTML 自定义属性 = 属性值;
+    // 			获取：DOM节点.getAttribute(自定义属性)
+    // 			设置：DOM节点.setAttribute(自定义属性,属性值)
+
+    // 	内置属性
+    // 		innerHTML：可以识别HTML结构
+    // 		innerText：不识别HTML结构
+
+    // 方法
+    // 	删除DOM：父亲DOM.removeChild(子DOM节点);  参数不是字符串；
+    // 	创建DOM：document.createElement('标签名');   元素对象
+    // 	添加DOM：
+    // 		父级DOM.appendChild(新的子DOM节点)
+    // 		父级DOM.insertBefore(新的子DOM节点，参考DOM节点)
+
+    // 样式
+    // 	DOM.style  : 值是css行内样式对象
+    // 	DOM.classList   :值是对象
+    // 		.add(类名)
+    // 		remove(类名)
+    // 		.toggle(类名)
+    // 	DOM.className :  值获取标签内 class属性值，一般不用设置！
+  </script>
+  清空表单:原生DOM方法reset用于重置表单
+</html>

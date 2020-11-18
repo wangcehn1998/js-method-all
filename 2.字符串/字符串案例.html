@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <!-- 查找o出现的位置以及次数 -->
+  <script>
+    // var str = "abcoefoxyozzopp";
+    // var index = str.indexOf("o");
+    // var num = 0;
+    // while (index != -1) {
+    //   console.log(index);
+    //   num++;
+    //   index = str.indexOf("o", index + 1);
+    // }
+    // console.log(num);
+  </script>
+  <!-- 统计出现最多字符并记录位置 -->
+  <script>
+    var str = "abcoefoxyozzopp";
+    var obj = {};
+    for (let i = 0; i < str.length; i++) {
+      //返回字符
+      var k = str.charAt(i);
+      //   obj[k]是对象有没有这个属性名
+      if (obj[k]) {
+        obj[k]++;
+      } else {
+        obj[k] = 1;
+      }
+    }
+    console.log(obj);
+
+    // var max = 0;
+    // var k = "";
+    // for (var key in obj) {
+    //   if (obj[key] > max) {
+    //     max = obj[key];
+    //     k = key;
+    //   }
+    // }
+    // console.log(max, k);
+  </script>
+  <!-- 替换所有相同字符 -->
+  <script>
+    // var str = "abcoefoxyozzopp";
+    // var arr = str.split("");
+    // var nArr = [];
+    // for (let i = 0; i < arr.length; i++) {
+    //   if (nArr.indexOf(arr[i]) === -1) {
+    //     nArr.push(arr[i]);
+    //   }
+    // }
+    // var nStr = nArr.join("");
+    // console.log(nStr);
+  </script>
+  <!-- 字符串首字母转大写 -->
+  <script>
+    // var str = "get-element-by-id";
+    // var arr = str.split("-");
+    // var nStr = "";
+    // for (let i = 1; i < arr.length; i++) {
+    //   nStr += arr[i].charAt(0).toUpperCase() + arr[i].substr(1);
+    // }
+    // nStr = arr[0] + nStr;
+    // console.log(nStr);
+  </script>
+  <!-- 写一个function清除字符串前后空格，兼容所有浏览器 -->
+  <script>
+    // if (!String.prototype.trim) {
+    //   String.prototype.trim = function () {
+    //     return this.replace(/^\s+$/, "");
+    //   };
+    // }
+  </script>
+  <!-- 输出今天日期 -->
+  <script>
+    // var date = new Date();
+    // var y = date.getFullYear();
+    // var m = date.getMonth() + 1;
+    // m = m < 0 ? m + "0" : m;
+    // var d = date.getDate();
+    // d = d < 0 ? d + "0" : d;
+    // console.log(`今天是${y}年 ${m}月 ${d}日`);
+  </script>
+  <!-- url格式>>>json结构{a:'1',b:'2'} -->
+  <script>
+    function getUrl(url) {
+      var obj = {};
+      if (/\?/.test(url)) {
+        //   截取问号后边的所有数据
+        var urlString = url.substring(url.indexOf("?") + 1);
+        var urlArray = urlString.split("&");
+        for (var i = 0; i < urlArray.length; i++) {
+          var urlItem = urlArray[i];
+          var item = urlItem.split("=");
+          obj[item[0]] = item[1];
+        }
+        return obj;
+      }
+      return null;
+    }
+  </script>
+</html>
